@@ -12,6 +12,19 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet var timer: WKInterfaceTimer!
+    
+    @IBAction func onTimerButton() {
+        print("onTimerButton")
+        let countdown: TimeInterval = 20
+        let date = Date(timeIntervalSinceNow: countdown)
+        timer.setDate(date)
+        
+    }
+    @IBAction func tapToVibro() {
+        WKInterfaceDevice.current().play(.success)
+    }
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
