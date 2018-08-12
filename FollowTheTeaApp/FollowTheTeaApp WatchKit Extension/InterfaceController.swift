@@ -22,6 +22,17 @@ class InterfaceController: WKInterfaceController {
         
     }
     @IBAction func tapToVibro() {
+        vibrate()
+        for i in 1...5 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i), execute: { [weak self] in
+                self?.vibrate()
+            })
+        }
+        
+        
+    }
+    
+    @objc func vibrate() {
         WKInterfaceDevice.current().play(.success)
     }
     
